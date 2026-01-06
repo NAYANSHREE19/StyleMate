@@ -1,0 +1,192 @@
+/* Homepage.css - Homepage Styles */
+
+.homepage {
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--background-beige) 0%, #F0EBE3 100%);
+    padding: var(--spacing-3xl) 0;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Hero Content */
+.hero-content {
+    padding-right: var(--spacing-xl);
+}
+
+.hero-content h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: var(--font-size-lg);
+    color: var(--text-medium);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.hero-description {
+    font-size: var(--font-size-base);
+    color: var(--text-medium);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-lg);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-light) 100%);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(139, 95, 191, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(139, 95, 191, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-purple);
+    border-color: var(--primary-purple);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-purple);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Fashion Image */
+.fashion-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fashion-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 40px var(--shadow-medium);
+    transition: transform var(--transition-base);
+}
+
+.fashion-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Decorative Elements */
+.fashion-image::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-purple-light) 0%, var(--primary-purple) 100%);
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.fashion-image::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-dark) 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    opacity: 0.08;
+    z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero .container {
+        gap: var(--spacing-2xl);
+    }
+    
+    .hero-content h2 {
+        font-size: var(--font-size-3xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--spacing-2xl) 0;
+        min-height: auto;
+    }
+    
+    .hero .container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+    
+    .hero-content {
+        padding-right: 0;
+        order: 2;
+    }
+    
+    .fashion-image {
+        order: 1;
+    }
+    
+    .hero-content h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

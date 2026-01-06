@@ -1,0 +1,143 @@
+/* RecommendationPage.css */
+.recommendations-page {
+  padding: 3rem 0;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.recommendations-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.recommendations-page h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.recommendations-page h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #3498db, #9b59b6);
+}
+
+.recommendations-page p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* Outfit Card Styles (you might want to move these to OutfitCard.css) */
+.outfit-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.outfit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.outfit-card-image {
+  width: 150%;
+  height: 150px;
+  object-fit: cover;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 1rem;
+}
+
+.outfit-card-content {
+  padding: 1.5rem;
+}
+
+.outfit-card-title {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.outfit-card-description {
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.outfit-card-items {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.outfit-card-items ul {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.outfit-card-items li {
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .recommendations-page {
+    padding: 2rem 0;
+  }
+
+  .recommendations-page h2 {
+    font-size: 2rem;
+  }
+
+  .recommendations-page p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Animation for cards */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.recommendations-grid > * {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.recommendations-grid > *:nth-child(1) { animation-delay: 0.1s; }
+.recommendations-grid > *:nth-child(2) { animation-delay: 0.2s; }
+.recommendations-grid > *:nth-child(3) { animation-delay: 0.3s; }
