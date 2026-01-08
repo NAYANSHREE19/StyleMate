@@ -1,0 +1,204 @@
+/* OutfitCard.css - Outfit Card Component Styles */
+
+.outfit-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    transition: all var(--transition-base);
+    border: 1px solid var(--border-light);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.outfit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px var(--shadow-medium);
+    border-color: var(--primary-purple-light);
+}
+
+/* Outfit Image */
+.outfit-image {
+    height: 200px;              
+    display: flex;              
+    justify-content: center;     
+    align-items: flex-end;        
+    background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+    padding-bottom: 20px;        
+}
+.outfit-image img {
+    width: 70%;                   
+    height: auto;                 
+    object-fit: contain;       
+    object-position: center;     
+    transition: transform var(--transition-slow);
+}
+
+.outfit-card:hover .outfit-image img {
+    transform: scale(1.1);
+}
+
+/* Placeholder for missing images */
+.outfit-image:empty::before {
+    content: '👗';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    opacity: 0.3;
+}
+
+/* Outfit Content */
+.outfit-content {
+    padding: var(--spacing-xl);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.outfit-content h3 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.3;
+}
+
+.outfit-content p {
+    font-size: var(--font-size-base);
+    color: var(--text-medium);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* Outfit Items */
+.outfit-items {
+    margin-bottom: var(--spacing-xl);
+}
+
+.outfit-items h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.outfit-items h4::before {
+    content: '✨';
+    font-size: var(--font-size-sm);
+}
+
+.outfit-items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.outfit-items li {
+    background-color: var(--background-beige);
+    color: var(--text-medium);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    position: relative;
+    padding-left: var(--spacing-lg);
+    transition: all var(--transition-fast);
+}
+
+.outfit-items li::before {
+    content: '•';
+    color: var(--primary-purple);
+    font-weight: bold;
+    position: absolute;
+    left: var(--spacing-sm);
+}
+
+.outfit-items li:hover {
+    background-color: var(--primary-purple-light);
+    color: var(--white);
+    transform: translateX(5px);
+}
+
+.outfit-items li:hover::before {
+    color: var(--white);
+}
+
+/* Try Outfit Button */
+.try-outfit-btn {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-light) 100%);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.try-outfit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.try-outfit-btn:hover::before {
+    left: 100%;
+}
+
+.try-outfit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 95, 191, 0.4);
+}
+
+.try-outfit-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .outfit-image {
+        height: 200px;
+    }
+    
+    .outfit-content {
+        padding: var(--spacing-lg);
+    }
+    
+    .outfit-content h3 {
+        font-size: var(--font-size-lg);
+    }
+    
+    .outfit-items li {
+        font-size: var(--font-size-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .outfit-card {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .outfit-image {
+        height: 180px;
+    }
+    
+    .outfit-content {
+        padding: var(--spacing-md);
+    }
+}
