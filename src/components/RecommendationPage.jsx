@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Trash2, Plus, Upload, Sparkles, TrendingUp } from 'lucide-react';
-import WardrobeML from '../utils/wardrobe-ml';
-import '../styles/wardrobe.css';
+// import WardrobeML from '../utils/wardrobe-ml';
+import '../components/RecommendationPage.css';
 
 function RecommendationPage() {
   const [wardrobe, setWardrobe] = useState([]);
