@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import "./Header.css";
 
+// ✅ IMPORT LOGO PROPERLY
+import logo from "../assets/logo.png"; // change path if needed
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,17 +14,12 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
   const navLinks = [
@@ -43,7 +41,8 @@ const Header = () => {
     <>
       <header className={`header ${isScrolled ? "scrolled" : ""}`}>
         <div className="container">
-          {/* Logo */}
+
+          {/* ✅ LOGO */}
           <div className="logo">
             <a
               href="/"
@@ -53,12 +52,12 @@ const Header = () => {
                 handleLinkClick("/");
               }}
             >
-              <div className="logo-icon">SM</div>
-              <span className="logo-text">Style Mate</span>
+              <img src={logo} alt="StyleMate" className="logo-image" />
+              <span className="logo-text">StyleMate</span>
             </a>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* ✅ DESKTOP NAV */}
           <nav className="desktop-nav">
             {navLinks.map((link) => (
               <a
@@ -68,27 +67,27 @@ const Header = () => {
                   e.preventDefault();
                   handleLinkClick(link.path);
                 }}
-                className={`nav-link ${activeLink === link.path ? "active" : ""} ${
-                  link.highlight ? "highlight" : ""
-                }`}
+                className={`nav-link ${
+                  activeLink === link.path ? "active" : ""
+                } ${link.highlight ? "highlight" : ""}`}
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* ✅ MOBILE MENU BUTTON */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="menu-button"
-            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* ✅ MOBILE OVERLAY */}
       {isMenuOpen && (
         <div
           className="mobile-overlay"
@@ -96,13 +95,13 @@ const Header = () => {
         />
       )}
 
-      {/* Mobile Navigation */}
+      {/* ✅ MOBILE NAV */}
       <nav className={`mobile-nav ${isMenuOpen ? "open" : ""}`}>
         <div className="mobile-nav-header">
-          <div className="mobile-logo-icon">SM</div>
-          <span className="mobile-logo-text">Style Mate</span>
+          <img src={logo} alt="StyleMate" className="mobile-logo-icon" />
+          <span className="mobile-logo-text">StyleMate</span>
         </div>
-        
+
         <div className="mobile-nav-links">
           {navLinks.map((link) => (
             <a
@@ -117,16 +116,13 @@ const Header = () => {
               } ${link.highlight ? "highlight" : ""}`}
             >
               {link.name}
-              {activeLink === link.path && (
-                <span className="active-indicator">•</span>
-              )}
             </a>
           ))}
         </div>
 
         <div className="mobile-nav-footer">
-          <p className="footer-text">© 2026 Style Mate</p>
-          <p className="footer-subtext">Your Personal Fashion Assistant</p>
+          <p>© 2026 StyleMate</p>
+          <span>Your Personal Fashion Assistant</span>
         </div>
       </nav>
     </>
